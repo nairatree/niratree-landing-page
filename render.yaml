@@ -1,9 +1,9 @@
 services:
   - type: web
     name: niratree-store
-    runtime: node
+    env: node
     plan: free
-    region: frankfurt # or oregon
+    region: frankfurt
     buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
