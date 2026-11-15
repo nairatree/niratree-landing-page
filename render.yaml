@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: niratree-store
+    runtime: node
+    plan: free
+    region: frankfurt # or oregon
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_WHATSAPP_PHONE
+        value: "2349134837317"
+      - key: ADMIN_SECRET_PIN
+        value: "2026"
+      - key: DATABASE_FILE
+        value: "./data/orders.db"

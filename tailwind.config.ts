@@ -1,0 +1,74 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        cream: {
+          50: "#FCFAF7",
+          100: "#FAF7F2",
+          200: "#F3EDE2",
+          300: "#E9DFCE",
+          400: "#D8C5A8",
+        },
+        forest: {
+          950: "#091710",
+          900: "#0F261B",
+          800: "#143826",
+          700: "#1C4E35",
+          600: "#256646",
+          500: "#2F7E57",
+        },
+        bamboo: {
+          100: "#F7EFE1",
+          200: "#EBDAC0",
+          300: "#DEC199",
+          400: "#CCA36B",
+          500: "#B88746",
+          600: "#9A6D33",
+          700: "#7A5325",
+        },
+        cta: {
+          DEFAULT: "#E25822", // High converting flame amber/coral
+          hover: "#C94815",
+          light: "#FFF1EB",
+        },
+        gold: {
+          DEFAULT: "#D4971A",
+          dark: "#B87E0E",
+          light: "#FEF7E6",
+        }
+      },
+      fontFamily: {
+        sans: ["var(--font-sans)", "Inter", "sans-serif"],
+        display: ["var(--font-display)", "Plus Jakarta Sans", "sans-serif"],
+      },
+      boxShadow: {
+        'warm': '0 8px 30px rgba(20, 56, 38, 0.08)',
+        'warm-lg': '0 20px 45px rgba(20, 56, 38, 0.12)',
+        'cta': '0 10px 25px rgba(226, 88, 34, 0.35)',
+      },
+      keyframes: {
+        shimmer: {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
+        },
+        pulseSlow: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.03)' },
+        }
+      },
+      animation: {
+        shimmer: 'shimmer 4s linear infinite',
+        pulseSlow: 'pulseSlow 2.5s ease-in-out infinite',
+      }
+    },
+  },
+  plugins: [],
+};
+export default config;
