@@ -38,13 +38,13 @@ export default function SolutionSection() {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-forest-900/10 text-forest-900 text-xs font-bold uppercase tracking-wider mb-4">
             <Sparkles className="w-4 h-4 text-bamboo-600" />
-            <span>The NiraTree Transformation</span>
+            <span>The NairaTree Transformation</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-forest-950 tracking-tight">
             Designed for Hospitality. Built for a Lifetime of Everyday Moments.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed">
-            NiraTree combines timeless Japanese &amp; Scandinavian woodcraft with everyday practicality to turn simple home meals and hosting into a five-star luxury experience.
+            NairaTree combines timeless Japanese &amp; Scandinavian woodcraft with everyday practicality to turn simple home meals and hosting into a five-star luxury experience.
           </p>
         </div>
 
@@ -108,12 +108,12 @@ export default function SolutionSection() {
             </div>
 
             <div className="lg:col-span-5 relative">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border-2 border-bamboo-400/40 shadow-2xl">
+              <div className="relative aspect-[3/4] max-w-sm mx-auto rounded-2xl overflow-hidden border-2 border-bamboo-400/40 shadow-2xl bg-stone-900/40">
                 <Image
                   src="/images/tray-rounded.jpg"
                   alt="Nesting Bamboo Tray System"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 768px) 100vw, 400px"
                 />
               </div>

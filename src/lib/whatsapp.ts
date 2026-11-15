@@ -35,7 +35,7 @@ export function buildCustomerOrderWhatsAppUrl(
     : `${order.delivery_address}, ${order.state} State`;
 
   const message = [
-    `Hello NiraTree Team! 👋`,
+    `Hello NairaTree Team! 👋`,
     `I just placed an order on your website. Here are my details:`,
     ``,
     `📦 Order Details:`,
@@ -60,7 +60,7 @@ export function buildAdminChatWhatsAppUrl(order: OrderRecord): string {
   const customerPhone = sanitizeWhatsAppPhone(order.whatsapp_phone);
   const message = [
     `Hello ${order.full_name}! 👋`,
-    `This is the NiraTree Dispatch & Support team regarding your order (${order.order_number}) for the ${order.package_name}.`,
+    `This is the NairaTree Dispatch & Support team regarding your order (${order.order_number}) for the ${order.package_name}.`,
     ``,
     `We are preparing your package for delivery to ${order.delivery_address}, ${order.state}.`,
     `Could you please confirm if you will be available to receive your order and complete Pay on Delivery?`

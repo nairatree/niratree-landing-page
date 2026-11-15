@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { TRAY_STYLES } from '@/lib/constants';
 import { TrayStyleId } from '@/lib/types';
-import { Check, Sparkles, ArrowRight, Ruler, CheckCircle } from 'lucide-react';
+import { Check, Sparkles, ArrowRight, Ruler, CheckCircle, Maximize2 } from 'lucide-react';
+import ImageLightbox from './ImageLightbox';
 
 interface StyleSelectorProps {
   onSelectStyle?: (styleId: TrayStyleId) => void;
@@ -12,8 +13,16 @@ interface StyleSelectorProps {
 
 export default function StyleSelector({ onSelectStyle }: StyleSelectorProps) {
   const [selectedStyleId, setSelectedStyleId] = useState<TrayStyleId>('rectangular');
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  const currentStyle = TRAY_STYLES.find((s) => s.id === selectedStyleId) || TRAY_STYLES[0];
+  const currentStyleIndex = TRAY_STYLES.findIndex((s) => s.id === selectedStyleId);
+  const currentStyle = TRAY_STYLES[currentStyleIndex >= 0 ? currentStyleIndex : 0];
+
+  const lightboxImages = TRAY_STYLES.map((s) => ({
+    src: s.image,
+    title: s.name,
+    subtitle: `${s.subtitle} · Set of 3 Nesting Trays (Small, Medium, Large)`,
+  }));
 
   const handleSelectAndScroll = (styleId: TrayStyleId) => {
     setSelectedStyleId(styleId);
@@ -55,7 +64,7 @@ export default function StyleSelector({ onSelectStyle }: StyleSelectorProps) {
           </p>
         </div>
 
-        {/* Tab Buttons: Grid on mobile, flex on desktop */}
+        {/* Tab Buttons */}
         <div className="grid grid-cols-3 gap-1.5 sm:flex sm:flex-wrap sm:justify-center sm:gap-3 mb-6 sm:mb-10 max-w-xl mx-auto">
           {TRAY_STYLES.map((style) => {
             const isActive = selectedStyleId === style.id;
@@ -79,18 +88,30 @@ export default function StyleSelector({ onSelectStyle }: StyleSelectorProps) {
         {/* Detailed Style Feature Display */}
         <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-10 shadow-warm-lg border border-bamboo-200/80">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
-            {/* Style Image */}
+            {/* Style Image with Lightbox Click */}
             <div className="lg:col-span-6">
-              <div className="relative aspect-[4/3] sm:aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden shadow-md border border-stone-200 group">
+              <div
+                onClick={() => setIsLightboxOpen(true)}
+                className="relative aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden shadow-md border border-stone-200 bg-stone-100 cursor-zoom-in group"
+                title="Click or tap to view uncropped full image"
+              >
                 <Image
                   src={currentStyle.image}
                   alt={currentStyle.name}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-contain sm:object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, 550px"
                 />
+
+                {/* Floating Top Badge */}
                 <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-forest-950/85 backdrop-blur-sm text-amber-300 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold border border-forest-700">
                   {currentStyle.tag}
+                </div>
+
+                {/* Click to view full image indicator */}
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-black/65 hover:bg-black/85 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow flex items-center gap-1.5 border border-white/20 transition-all">
+                  <Maximize2 className="w-3.5 h-3.5 text-amber-400" />
+                  <span>View Full Size</span>
                 </div>
               </div>
             </div>
@@ -162,6 +183,15 @@ export default function StyleSelector({ onSelectStyle }: StyleSelectorProps) {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      <ImageLightbox
+        isOpen={isLightboxOpen}
+        onClose={() => setIsLightboxOpen(false)}
+        images={lightboxImages}
+        currentIndex={currentStyleIndex >= 0 ? currentStyleIndex : 0}
+        onNavigate={(idx) => setSelectedStyleId(TRAY_STYLES[idx].id)}
+      />
     </section>
   );
 }

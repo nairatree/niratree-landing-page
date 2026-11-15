@@ -57,7 +57,7 @@ describe('NiraTree Order & Funnel Automated Verification Suite', () => {
       order_number: 'NT-TEST999',
       full_name: 'Dr. Halima & Mrs. Bello',
       whatsapp_phone: '08123456789',
-      package_name: 'The Complete NiraTree Trio (9 Trays)',
+      package_name: 'The Complete NairaTree Trio (9 Trays)',
       tray_style_name: 'Style C: Elegant Oval',
       total_price: 74000,
       delivery_address: '15 Crescent Road, off GRA',
@@ -65,10 +65,10 @@ describe('NiraTree Order & Funnel Automated Verification Suite', () => {
       city: 'Port Harcourt',
     };
 
-    const businessPhone = '2348012345678';
+    const businessPhone = '2349134837317';
     const url = buildCustomerOrderWhatsAppUrl(mockOrder, businessPhone);
 
-    assert.ok(url.startsWith('https://wa.me/2348012345678?text='), 'Must target sanitized business phone');
+    assert.ok(url.startsWith('https://wa.me/2349134837317?text='), 'Must target sanitized business phone');
     assert.ok(url.includes(encodeURIComponent('NT-TEST999')), 'Must contain encoded order number');
     assert.ok(url.includes(encodeURIComponent('Dr. Halima & Mrs. Bello')), 'Must safely encode ampersands and special characters');
     assert.ok(url.includes(encodeURIComponent('₦74,000')), 'Must include formatted Naira price');

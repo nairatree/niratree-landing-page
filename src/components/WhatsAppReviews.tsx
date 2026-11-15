@@ -12,13 +12,13 @@ const reviews = [
     date: '2 days ago',
     avatar: 'FA',
     chatMessage:
-      'Good afternoon NiraTree! 👋 Just wanted to say a big thank you. The dispatch guy delivered this morning at Admiralty Way and I paid on delivery. The bamboo is heavy, splinter-free, and looks 10x more expensive than what I paid. My sisters are already asking for your link!',
+      'Good afternoon NairaTree! 👋 Just wanted to say a big thank you. The dispatch guy delivered this morning at Admiralty Way and I paid on delivery. The bamboo is heavy, splinter-free, and looks 10x more expensive than what I paid. My sisters are already asking for your link!',
     verified: true,
   },
   {
     name: 'Engr. Chukwudi Okonkwo',
     location: 'Gwarinpa Estate, Abuja',
-    packageBought: 'Package 3: The Complete NiraTree Trio',
+    packageBought: 'Package 3: The Complete NairaTree Trio',
     rating: 5,
     date: '3 days ago',
     avatar: 'CO',

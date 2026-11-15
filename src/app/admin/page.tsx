@@ -203,7 +203,7 @@ export default function AdminPage() {
           </div>
 
           <h1 className="text-2xl font-black text-forest-950 mb-1">
-            NiraTree CRM Access
+            NairaTree CRM Access
           </h1>
           <p className="text-xs text-stone-500 mb-6">
             Enter your secret Admin PIN to view and manage customer orders.
@@ -259,7 +259,7 @@ export default function AdminPage() {
             </div>
             <div>
               <h1 className="font-display font-black text-xl tracking-tight text-white flex items-center gap-2">
-                <span>NiraTree Orders CRM</span>
+                <span>NairaTree Orders CRM</span>
                 <span className="bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">
                   LIVE DB
                 </span>

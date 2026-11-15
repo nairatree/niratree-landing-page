@@ -156,7 +156,7 @@ export default function OrderForm({
               <span>Step-by-Step Order Qualification</span>
             </div>
             <h2 className="text-xl sm:text-3xl font-black text-white">
-              Claim Your NiraTree Bamboo Trays
+              Claim Your NairaTree Bamboo Trays
             </h2>
             <p className="mt-1 text-xs text-stone-300">
               Pay on Delivery Available Nationwide · Free Delivery Today

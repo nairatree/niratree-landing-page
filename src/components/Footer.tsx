@@ -91,10 +91,10 @@ export default function Footer() {
         {/* Disclaimer & Copyright */}
         <div className="pt-8 border-t border-forest-900/80 text-center text-xs text-stone-400 space-y-3">
           <p className="text-[11px] leading-relaxed max-w-2xl mx-auto">
-            Disclaimer: NiraTree is an independent direct-to-consumer brand. All product trademarks, imagery, and specifications are proprietary. We strictly operate a verified order fulfillment process across Nigerian states.
+            Disclaimer: NairaTree is an independent direct-to-consumer brand. All product trademarks, imagery, and specifications are proprietary. We strictly operate a verified order fulfillment process across Nigerian states.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-stone-400">
-            <span>&copy; {new Date().getFullYear()} NiraTree™ Nigeria. All rights reserved.</span>
+            <span>&copy; {new Date().getFullYear()} NairaTree™ Nigeria. All rights reserved.</span>
             <span className="hidden sm:inline">•</span>
             <span className="flex items-center gap-1">
               Crafted with <Heart className="w-3 h-3 text-rose-500 fill-rose-500" /> for elegant Nigerian homes

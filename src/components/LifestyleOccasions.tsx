@@ -42,7 +42,7 @@ export default function LifestyleOccasions() {
             One 3-Piece Set. Endless Ways to Elevate Your Home.
           </h2>
           <p className="mt-3 text-stone-300 text-sm sm:text-base">
-            Not just a serving tray — NiraTree is an essential centerpiece that adds warmth, order, and luxury to every corner of your living space.
+            Not just a serving tray — NairaTree is an essential centerpiece that adds warmth, order, and luxury to every corner of your living space.
           </p>
         </div>
 

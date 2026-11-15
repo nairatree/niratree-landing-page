@@ -2,22 +2,26 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Star, CheckCircle2, ArrowRight, ShieldCheck, Sparkles, Layers, Eye } from 'lucide-react';
+import { Star, CheckCircle2, ArrowRight, ShieldCheck, Sparkles, Layers, Eye, Maximize2 } from 'lucide-react';
 import { trackInitiateCheckout } from '@/lib/meta-pixel';
+import ImageLightbox from './ImageLightbox';
 
 const heroImages = [
   {
-    title: 'Style A: Classic Rectangular',
+    title: 'Style A: Classic Rectangular (Set of 3 Trays)',
+    subtitle: 'Small, Medium & Large · Beveled Edges & Cut-Out Handles',
     src: '/images/tray-rectangular.jpg',
     tag: 'Bestseller · Beveled Edges',
   },
   {
-    title: 'Style B: Modern Rounded-Corner',
+    title: 'Style B: Modern Rounded-Corner (Set of 3 Trays)',
+    subtitle: 'Small, Medium & Large · Smooth Rounded Corners',
     src: '/images/tray-rounded.jpg',
     tag: 'Trending · Curved Corners',
   },
   {
-    title: 'Style C: Elegant Oval',
+    title: 'Style C: Elegant Oval (Set of 3 Trays)',
+    subtitle: 'Small, Medium & Large · Sleek Raised Rim Silhouette',
     src: '/images/tray-oval.jpg',
     tag: 'Luxury · Sleek Raised Rim',
   },
@@ -25,6 +29,7 @@ const heroImages = [
 
 export default function Hero() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const handleOrderClick = () => {
     trackInitiateCheckout('Hero CTA', 28500);
@@ -56,7 +61,7 @@ export default function Hero() {
             </div>
             <div>
               <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-forest-950">
-                Nira<span className="text-bamboo-600">Tree</span>
+                Naira<span className="text-bamboo-600">Tree</span>
               </span>
               <span className="block text-[9px] sm:text-[10px] tracking-widest uppercase text-stone-500 font-semibold">
                 Handcrafted Home &amp; Living
@@ -85,7 +90,7 @@ export default function Hero() {
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-forest-950 leading-[1.2] sm:leading-[1.15] tracking-tight">
               Upgrade Your Home &amp; Host Guests in Style with{' '}
               <span className="text-forest-800 underline decoration-bamboo-400 decoration-wavy decoration-2">
-                NiraTree
+                NairaTree
               </span>{' '}
               Handcrafted Bamboo Serving Trays{' '}
               <span className="text-cta block sm:inline font-bold">
@@ -179,17 +184,27 @@ export default function Hero() {
                   <span>{heroImages[activeImageIndex].tag}</span>
                 </div>
 
-                {/* Main Product Image */}
-                <div className="relative aspect-[4/3] sm:aspect-[3/4] w-full rounded-xl sm:rounded-2xl overflow-hidden bg-stone-100 shadow-inner">
+                {/* Clickable Image Box that pops open the Lightbox */}
+                <div
+                  onClick={() => setIsLightboxOpen(true)}
+                  className="relative aspect-[3/4] w-full rounded-xl sm:rounded-2xl overflow-hidden bg-stone-100 shadow-inner cursor-zoom-in group/img"
+                  title="Click or tap to view uncropped full image"
+                >
                   <Image
                     src={heroImages[activeImageIndex].src}
                     alt={heroImages[activeImageIndex].title}
                     fill
                     priority
-                    className="object-cover object-center transition-all duration-500 group-hover:scale-105"
+                    className="object-contain sm:object-cover object-center transition-all duration-500 group-hover/img:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+
+                  {/* Tap to view full image indicator button */}
+                  <div className="absolute top-4 right-4 z-20 bg-black/65 hover:bg-black/85 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow flex items-center gap-1.5 border border-white/20 transition-all">
+                    <Maximize2 className="w-3.5 h-3.5 text-amber-400" />
+                    <span>View Full Size</span>
+                  </div>
 
                   {/* Bottom Image Overlay Label */}
                   <div className="absolute bottom-3 left-3 right-3 text-white z-10">
@@ -208,7 +223,7 @@ export default function Hero() {
                     <button
                       key={img.src}
                       onClick={() => setActiveImageIndex(idx)}
-                      className={`relative aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden border-2 transition-all p-0.5 ${
+                      className={`relative aspect-[3/4] rounded-lg sm:rounded-xl overflow-hidden border-2 transition-all p-0.5 bg-stone-50 ${
                         activeImageIndex === idx
                           ? 'border-cta shadow-md ring-2 ring-cta/20'
                           : 'border-bamboo-200 opacity-70 hover:opacity-100'
@@ -218,7 +233,7 @@ export default function Hero() {
                         src={img.src}
                         alt={img.title}
                         fill
-                        className="object-cover rounded"
+                        className="object-contain sm:object-cover rounded"
                         sizes="120px"
                       />
                       <span className="absolute bottom-1 right-1 bg-black/75 text-white text-[8px] sm:text-[9px] font-bold px-1 rounded">
@@ -240,6 +255,15 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Full View Lightbox Modal */}
+      <ImageLightbox
+        isOpen={isLightboxOpen}
+        onClose={() => setIsLightboxOpen(false)}
+        images={heroImages}
+        currentIndex={activeImageIndex}
+        onNavigate={(idx) => setActiveImageIndex(idx)}
+      />
     </section>
   );
 }

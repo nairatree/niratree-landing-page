@@ -1,6 +1,6 @@
 import { PricingPackageOption, TrayStyleOption } from './types';
 
-export const BRAND_NAME = "NiraTree";
+export const BRAND_NAME = "NairaTree";
 export const BRAND_TAGLINE = "Handcrafted Bamboo Serving Trays (Set of 3 Nesting Trays)";
 
 export const TRAY_STYLES: TrayStyleOption[] = [
@@ -68,7 +68,7 @@ export const PRICING_PACKAGES: PricingPackageOption[] = [
   },
   {
     id: 'package_3',
-    name: 'The Complete NiraTree Trio (9 Trays)',
+    name: 'The Complete NairaTree Trio (9 Trays)',
     badge: 'ULTIMATE LUXURY · 35% OFF',
     trayCount: 9,
     originalPrice: 114000,
