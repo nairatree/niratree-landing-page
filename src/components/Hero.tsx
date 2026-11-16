@@ -58,14 +58,14 @@ export default function Hero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Navigation / Brand Header */}
-        <div className="flex items-center justify-between pb-4 sm:pb-6 mb-6 sm:mb-8 border-b border-bamboo-200/60">
-          <div className="flex items-center gap-3">
-            <div className="relative">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-4 sm:pb-6 mb-6 sm:mb-8 border-b border-bamboo-200/60">
+          <div className="flex items-center justify-center sm:justify-start gap-3 w-full sm:w-auto">
+            <div className="relative flex justify-center">
               <Image
                 src="/images/nairatree-logo.png"
                 alt="NairaTree"
-                width={170}
-                height={34}
+                width={160}
+                height={32}
                 priority
                 className="h-8 sm:h-9 w-auto object-contain"
               />
@@ -77,18 +77,18 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto">
             <a
               href={VIP_WHATSAPP_GROUP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-[#005C37] px-3 py-1.5 rounded-full border border-emerald-200 text-[11px] font-bold transition-all shadow-sm"
+              className="inline-flex items-center justify-center gap-1.5 bg-[#003822] hover:bg-[#005C37] text-amber-300 hover:text-white px-3.5 py-1.5 rounded-full border border-emerald-500/40 text-xs font-bold transition-all shadow-sm whitespace-nowrap"
             >
-              <Users className="w-3.5 h-3.5 text-brand" />
-              <span>Join VIP WhatsApp</span>
+              <Users className="w-3.5 h-3.5 text-amber-300 flex-shrink-0" />
+              <span className="whitespace-nowrap">Join Our VIP WhatsApp Group</span>
             </a>
 
-            <div className="hidden md:flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-brand/20 text-xs font-semibold text-brand-dark shadow-sm">
+            <div className="hidden md:flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-brand/20 text-xs font-semibold text-brand-dark shadow-sm whitespace-nowrap">
               <ShieldCheck className="w-3.5 h-3.5 text-brand flex-shrink-0" />
               <span>100% Authentic Bamboo</span>
             </div>
@@ -100,9 +100,10 @@ export default function Hero() {
           {/* Left Column: Copy & High-Converting Hook */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
             {/* Eyebrow Pill */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest-900/5 border border-forest-900/15 text-forest-900 text-[11px] sm:text-xs font-bold">
+            <div className="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-forest-900/5 border border-forest-900/15 text-forest-900 text-[11px] sm:text-xs font-bold text-center">
               <span className="w-2 h-2 rounded-full bg-cta animate-ping flex-shrink-0" />
-              <span>100% Organic Bamboo · Set of 3 Nesting Trays · From ₦25,000</span>
+              <span className="hidden sm:inline">100% Organic Bamboo · Set of 3 Nesting Trays · From ₦25,000</span>
+              <span className="sm:hidden">100% Bamboo · Set of 3 Trays · From ₦25,000</span>
             </div>
 
             {/* Main Headline */}

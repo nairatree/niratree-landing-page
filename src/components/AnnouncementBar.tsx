@@ -9,20 +9,11 @@ export default function AnnouncementBar() {
     <div className="bg-gradient-to-r from-[#003822] via-[#005C37] to-[#003822] text-cream-50 text-[11px] sm:text-xs font-semibold py-2 px-3 shadow-sm border-b border-[#00472B]">
       <div className="max-w-7xl mx-auto flex items-center justify-between sm:justify-center gap-2 sm:gap-6 text-center">
         {/* Mobile View */}
-        <div className="flex sm:hidden items-center justify-between w-full">
-          <div className="flex items-center gap-1.5 text-amber-300 font-bold">
-            <Flame className="w-3.5 h-3.5 text-cta animate-bounce flex-shrink-0" />
-            <span className="truncate">Handcrafted Bamboo Trays (Set of 3)</span>
-          </div>
-          <a
-            href={VIP_WHATSAPP_GROUP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-[10px] text-emerald-300 font-bold whitespace-nowrap bg-black/30 px-2 py-0.5 rounded-full border border-white/20"
-          >
-            <Users className="w-3 h-3 text-amber-300" />
-            <span>VIP Group</span>
-          </a>
+        <div className="flex sm:hidden items-center justify-center gap-1.5 w-full text-center">
+          <Flame className="w-3.5 h-3.5 text-cta animate-bounce flex-shrink-0" />
+          <span className="text-[11px] font-bold text-amber-300">
+            Handcrafted Bamboo Trays (Set of 3) · From ₦25,000
+          </span>
         </div>
 
         {/* Tablet & Desktop View */}

@@ -55,11 +55,11 @@ export default function VIPGroupBanner() {
                 href={VIP_WHATSAPP_GROUP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-4 px-6 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-forest-950 font-black text-base shadow-xl hover:shadow-2xl transition-all duration-200 flex items-center justify-center gap-3 transform hover:-translate-y-0.5 active:translate-y-0 text-center"
+                className="w-full py-3.5 sm:py-4 px-4 sm:px-6 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-forest-950 font-black text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all duration-200 flex items-center justify-center gap-2.5 sm:gap-3 transform hover:-translate-y-0.5 active:translate-y-0 text-center whitespace-nowrap"
               >
                 <MessageCircle className="w-5 h-5 text-forest-950 flex-shrink-0" />
-                <span>JOIN VIP GROUP NOW</span>
-                <ArrowRight className="w-4 h-4 text-forest-950" />
+                <span className="whitespace-nowrap">JOIN VIP GROUP NOW</span>
+                <ArrowRight className="w-4 h-4 text-forest-950 flex-shrink-0" />
               </a>
 
               <div className="text-[11px] text-stone-200 flex items-center justify-center gap-1.5 font-medium">
