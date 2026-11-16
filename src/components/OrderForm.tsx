@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { PRICING_PACKAGES, TRAY_STYLES, NIGERIAN_STATES } from '@/lib/constants';
+import { PRICING_PACKAGES, TRAY_STYLES, NIGERIAN_STATES, VIP_WHATSAPP_GROUP_URL } from '@/lib/constants';
 import { PackageId, TrayStyleId, OrderRecord } from '@/lib/types';
 import { trackOrderLead } from '@/lib/meta-pixel';
 import {
@@ -63,6 +63,9 @@ export default function OrderForm({
     PRICING_PACKAGES.find((p) => p.id === selectedPackageId) || PRICING_PACKAGES[1];
   const selectedStyle =
     TRAY_STYLES.find((s) => s.id === selectedStyleId) || TRAY_STYLES[0];
+
+  const currentPrice =
+    selectedPackageId === 'package_1' ? selectedStyle.price : selectedPackage.price;
 
   const formatPrice = (amount: number) => '₦' + amount.toLocaleString('en-NG');
 
@@ -168,7 +171,7 @@ export default function OrderForm({
               Claim Your Handcrafted Bamboo Trays
             </h2>
             <p className="mt-1 text-xs text-stone-200">
-              Pay on Delivery Available Nationwide · Free Delivery Today
+              Fast Dispatch Across Nigeria · Delivery Fee Calculated by Location
             </p>
           </div>
 
@@ -181,8 +184,7 @@ export default function OrderForm({
                   ⚠️ IMPORTANT NOTICE (SERIOUS BUYERS ONLY):
                 </span>
                 <p className="mt-1 text-stone-800 text-[11px] sm:text-xs leading-relaxed">
-                  Please only place this order if you are <strong>financially ready</strong> and will be{' '}
-                  <strong>physically available to receive your package and pay the dispatch rider</strong> within 1 to 3 business days.
+                  Please only place this order if you are <strong>financially ready</strong> and available to receive your package within 1 to 3 business days. Delivery fee will be calculated based on your address and confirmed with you on WhatsApp.
                 </p>
               </div>
             </div>
@@ -235,7 +237,7 @@ export default function OrderForm({
 
                       <div className="mt-2.5 pt-2.5 border-t border-stone-100 flex items-baseline justify-between">
                         <span className="text-base sm:text-lg font-black text-forest-900">
-                          {formatPrice(pkg.price)}
+                          {pkg.id === 'package_1' ? `From ${formatPrice(pkg.price)}` : formatPrice(pkg.price)}
                         </span>
                         <span className="text-[11px] sm:text-xs text-stone-400 line-through">
                           {formatPrice(pkg.originalPrice)}
@@ -280,9 +282,14 @@ export default function OrderForm({
                         />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-[11px] sm:text-xs text-forest-950 truncate">
-                          {label}
-                        </span>
+                        <div className="truncate">
+                          <span className="font-bold text-[11px] sm:text-xs text-forest-950 block truncate">
+                            {label}
+                          </span>
+                          <span className="text-[10px] text-emerald-700 font-extrabold block">
+                            ₦{style.price.toLocaleString('en-NG')}
+                          </span>
+                        </div>
                         <div
                           className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border flex items-center justify-center flex-shrink-0 ${
                             isSelected
@@ -473,14 +480,17 @@ export default function OrderForm({
                 <span className="font-bold text-forest-950">{selectedStyle.name}</span>
               </div>
               <div className="flex justify-between text-xs text-stone-600">
-                <span>Nationwide Shipping:</span>
-                <span className="font-bold text-emerald-600">FREE PROMO (₦0)</span>
+                <span>Delivery Fee:</span>
+                <span className="font-bold text-amber-800">Calculated based on location (Confirmed on WhatsApp)</span>
               </div>
               <div className="pt-2 border-t border-bamboo-200 flex justify-between items-baseline">
-                <span className="font-black text-xs sm:text-sm text-forest-950">Total on Delivery:</span>
+                <span className="font-black text-xs sm:text-sm text-forest-950">Product Total:</span>
                 <span className="font-black text-xl sm:text-2xl text-cta">
-                  {formatPrice(selectedPackage.price)}
+                  {formatPrice(currentPrice)}
                 </span>
+              </div>
+              <div className="text-[11px] text-stone-500 italic">
+                * Note: Delivery fee is not included above; it will be calculated based on your exact address and confirmed directly with you on WhatsApp before dispatch.
               </div>
             </div>
 
@@ -507,22 +517,22 @@ export default function OrderForm({
                 ) : (
                   <>
                     <Send className="w-4 h-4 flex-shrink-0" />
-                    <span>CONFIRM ORDER &amp; PAY ON DELIVERY</span>
+                    <span>CONFIRM ORDER</span>
                   </>
                 )}
               </button>
 
               <div className="mt-3 flex flex-wrap items-center justify-center gap-3 text-[11px] text-stone-500 font-medium">
                 <span className="flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> 100% Pay on Delivery
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> 100% Natural Bamboo
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
-                  <Truck className="w-3.5 h-3.5 text-forest-700" /> Free Delivery
+                  <Truck className="w-3.5 h-3.5 text-forest-700" /> Delivery Calculated by State
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-amber-600" /> 24-48h Dispatch
+                  <Clock className="w-3.5 h-3.5 text-amber-600" /> Fast 24-48h Dispatch
                 </span>
               </div>
             </div>
@@ -552,7 +562,8 @@ export default function OrderForm({
             </p>
 
             <div className="bg-cream-50 p-3 rounded-xl border border-bamboo-200 text-left text-xs space-y-1 mb-4 text-stone-700">
-              <div><strong>Amount to Pay:</strong> {formatPrice(submittedOrder.total_price)}</div>
+              <div><strong>Product Total:</strong> {formatPrice(submittedOrder.total_price)}</div>
+              <div><strong>Delivery Fee:</strong> Will be calculated for your address and added on WhatsApp</div>
               <div><strong>Address:</strong> {submittedOrder.delivery_address}, {submittedOrder.state}</div>
               <div><strong>WhatsApp:</strong> {submittedOrder.whatsapp_phone}</div>
             </div>
@@ -565,11 +576,25 @@ export default function OrderForm({
               href={whatsappRedirectUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all text-sm"
+              className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all text-sm mb-3"
             >
               <MessageCircle className="w-4 h-4" />
               <span>SEND TO WHATSAPP DESK</span>
             </a>
+
+            <div className="pt-3 border-t border-stone-200">
+              <p className="text-[11px] text-stone-600 mb-1.5 font-bold">
+                Want VIP member discounts and wholesale deals?
+              </p>
+              <a
+                href={VIP_WHATSAPP_GROUP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-1.5 bg-forest-900 hover:bg-forest-800 text-amber-300 font-bold py-2.5 px-3 rounded-xl transition-all text-xs"
+              >
+                <span>🌟 Join NairaTree VIP WhatsApp Community</span>
+              </a>
+            </div>
 
             <button
               onClick={() => setSubmittedOrder(null)}

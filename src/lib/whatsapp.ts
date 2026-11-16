@@ -1,7 +1,7 @@
 import { OrderRecord } from './types';
 
 /**
- * Standardize phone numbers to international WhatsApp format (e.g., 2348012345678)
+ * Standardize phone numbers to international WhatsApp format (e.g., 2349134837317)
  */
 export function sanitizeWhatsAppPhone(phone: string): string {
   let cleaned = phone.replace(/[^0-9]/g, '');
@@ -20,7 +20,7 @@ export function formatNaira(amount: number): string {
 }
 
 /**
- * Build pre-filled WhatsApp message for customer to send to NiraTree Business
+ * Build pre-filled WhatsApp message for customer to send to NairaTree Business
  */
 export function buildCustomerOrderWhatsAppUrl(
   order: Pick<OrderRecord, 'order_number' | 'full_name' | 'whatsapp_phone' | 'package_name' | 'tray_style_name' | 'total_price' | 'delivery_address' | 'state' | 'city'>,
@@ -42,12 +42,12 @@ export function buildCustomerOrderWhatsAppUrl(
     `- Order ID: ${order.order_number}`,
     `- Name: ${order.full_name}`,
     `- WhatsApp: ${order.whatsapp_phone}`,
+    `- Tray Style: ${order.tray_style_name}`,
     `- Package: ${order.package_name}`,
-    `- Style: ${order.tray_style_name}`,
-    `- Total: ${formatNaira(order.total_price)} (Pay on Delivery)`,
+    `- Product Total: ${formatNaira(order.total_price)} (Delivery fee to be calculated)`,
     `- Delivery Address: ${address}`,
     ``,
-    `Please confirm my delivery schedule!`
+    `Please calculate my delivery fee and confirm my delivery schedule!`
   ].join('\n');
 
   return `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
@@ -62,8 +62,9 @@ export function buildAdminChatWhatsAppUrl(order: OrderRecord): string {
     `Hello ${order.full_name}! 👋`,
     `This is the NairaTree Dispatch & Support team regarding your order (${order.order_number}) for the ${order.package_name}.`,
     ``,
-    `We are preparing your package for delivery to ${order.delivery_address}, ${order.state}.`,
-    `Could you please confirm if you will be available to receive your order and complete Pay on Delivery?`
+    `We have received your delivery address: ${order.delivery_address}, ${order.state}.`,
+    `Your product price is ${formatNaira(order.total_price)}. We are calculating your exact delivery fee for your location right now.`,
+    `Are you ready to confirm your order?`
   ].join('\n');
 
   return `https://wa.me/${customerPhone}?text=${encodeURIComponent(message)}`;

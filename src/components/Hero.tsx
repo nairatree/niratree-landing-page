@@ -2,28 +2,32 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Star, CheckCircle2, ArrowRight, ShieldCheck, Sparkles, Layers, Eye, Maximize2 } from 'lucide-react';
+import { Star, CheckCircle2, ArrowRight, ShieldCheck, Sparkles, Layers, Eye, Maximize2, Users, MapPin } from 'lucide-react';
 import { trackInitiateCheckout } from '@/lib/meta-pixel';
 import ImageLightbox from './ImageLightbox';
+import { VIP_WHATSAPP_GROUP_URL } from '@/lib/constants';
 
 const heroImages = [
   {
-    title: 'Style A: Classic Rectangular (Set of 3 Trays)',
-    subtitle: 'Small, Medium & Large · Beveled Edges & Cut-Out Handles',
+    title: 'Style A: Classic Rectangular (Set of 3 Trays) — ₦25,000',
+    subtitle: 'Small, Medium & Large · Beveled Edges & Dual Cut-Out Handles',
     src: '/images/tray-rectangular.jpg',
-    tag: 'Bestseller · Beveled Edges',
+    tag: 'Classic Rectangular · ₦25,000',
+    price: '₦25,000',
   },
   {
-    title: 'Style B: Modern Rounded-Corner (Set of 3 Trays)',
-    subtitle: 'Small, Medium & Large · Smooth Rounded Corners',
-    src: '/images/tray-rounded.jpg',
-    tag: 'Trending · Curved Corners',
-  },
-  {
-    title: 'Style C: Elegant Oval (Set of 3 Trays)',
+    title: 'Style B: Elegant Oval (Set of 3 Trays) — ₦26,000',
     subtitle: 'Small, Medium & Large · Sleek Raised Rim Silhouette',
     src: '/images/tray-oval.jpg',
-    tag: 'Luxury · Sleek Raised Rim',
+    tag: 'Elegant Oval · ₦26,000',
+    price: '₦26,000',
+  },
+  {
+    title: 'Style C: Curved Edge (Set of 3 Trays) — ₦28,000',
+    subtitle: 'Small, Medium & Large · Smooth Rounded Corners',
+    src: '/images/tray-rounded.jpg',
+    tag: 'Curved Edge · ₦28,000',
+    price: '₦28,000',
   },
 ];
 
@@ -32,7 +36,7 @@ export default function Hero() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const handleOrderClick = () => {
-    trackInitiateCheckout('Hero CTA', 28500);
+    trackInitiateCheckout('Hero CTA', 25000);
     const formElement = document.getElementById('order-form');
     if (formElement) {
       formElement.scrollIntoView({ behavior: 'smooth' });
@@ -73,10 +77,21 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-2 bg-white/90 backdrop-blur-sm px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-brand/20 text-[10px] sm:text-xs font-semibold text-brand-dark shadow-sm">
-            <ShieldCheck className="w-3.5 h-3.5 text-brand flex-shrink-0" />
-            <span className="hidden xs:inline">100% Authentic Quality</span>
-            <span className="xs:hidden">Verified Quality</span>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a
+              href={VIP_WHATSAPP_GROUP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-[#005C37] px-3 py-1.5 rounded-full border border-emerald-200 text-[11px] font-bold transition-all shadow-sm"
+            >
+              <Users className="w-3.5 h-3.5 text-brand" />
+              <span>Join VIP WhatsApp</span>
+            </a>
+
+            <div className="hidden md:flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-brand/20 text-xs font-semibold text-brand-dark shadow-sm">
+              <ShieldCheck className="w-3.5 h-3.5 text-brand flex-shrink-0" />
+              <span>100% Authentic Bamboo</span>
+            </div>
           </div>
         </div>
 
@@ -87,7 +102,7 @@ export default function Hero() {
             {/* Eyebrow Pill */}
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest-900/5 border border-forest-900/15 text-forest-900 text-[11px] sm:text-xs font-bold">
               <span className="w-2 h-2 rounded-full bg-cta animate-ping flex-shrink-0" />
-              <span>100% Organic Bamboo · Set of 3 Nesting Trays</span>
+              <span>100% Organic Bamboo · Set of 3 Nesting Trays · From ₦25,000</span>
             </div>
 
             {/* Main Headline */}
@@ -105,9 +120,21 @@ export default function Hero() {
             {/* Subhead */}
             <p className="text-xs sm:text-base text-stone-700 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
               Say goodbye to flimsy plastic trays that crack and stain, and heavy metal that rusts.
-              Experience the timeless warmth of authentic, water-resistant bamboo trays featuring
-              deep spill-proof rims, ergonomic handles, and space-saving 3-in-1 nesting.
+              Experience authentic, water-resistant bamboo trays crafted with deep spill-proof rims,
+              ergonomic handles, and space-saving 3-in-1 nesting.
             </p>
+
+            {/* Price Preview Tag */}
+            <div className="bg-white/80 backdrop-blur-sm border border-bamboo-300 rounded-2xl p-3 max-w-lg mx-auto lg:mx-0 flex items-center justify-between text-xs sm:text-sm">
+              <div className="text-left">
+                <span className="text-[10px] sm:text-xs uppercase tracking-wider text-stone-500 font-bold block">
+                  Handcrafted Nesting Trays (Set of 3):
+                </span>
+                <span className="font-extrabold text-forest-950">
+                  Rectangular <strong>₦25,000</strong> · Oval <strong>₦26,000</strong> · Curved Edge <strong>₦28,000</strong>
+                </span>
+              </div>
+            </div>
 
             {/* Social Proof Stars Badge */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 pt-1">
@@ -139,8 +166,8 @@ export default function Hero() {
                 <span className="truncate"><strong>Multi-Use:</strong> Bed &amp; Party</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 flex-shrink-0" />
-                <span className="truncate"><strong>Pay on Delivery</strong></span>
+                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 flex-shrink-0" />
+                <span className="truncate"><strong>Nationwide Dispatch</strong></span>
               </div>
             </div>
 
@@ -148,9 +175,9 @@ export default function Hero() {
             <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3">
               <button
                 onClick={handleOrderClick}
-                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-cta hover:bg-cta-hover text-white px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-black shadow-cta hover:shadow-xl transition-all duration-200 active:scale-95"
+                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-cta hover:bg-cta-hover text-white px-7 sm:px-9 py-3.5 sm:py-4 rounded-xl text-base sm:text-lg font-black shadow-cta hover:shadow-xl transition-all duration-200 active:scale-95"
               >
-                <span>CLAIM PROMO &amp; PAY ON DELIVERY</span>
+                <span>CONFIRM ORDER</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0" />
               </button>
 
@@ -163,14 +190,10 @@ export default function Hero() {
               </button>
             </div>
 
-            {/* Micro Trust Guarantee */}
-            <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-4 text-[10px] sm:text-xs text-stone-500 font-medium">
-              <span className="flex items-center gap-1">
-                <ShieldCheck className="w-3 h-3 text-emerald-600" /> Pay upon delivery
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <Sparkles className="w-3 h-3 text-amber-500" /> Free delivery
+            {/* Delivery Fee Notice Under Button */}
+            <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 text-[10px] sm:text-xs text-stone-500 font-medium">
+              <span className="flex items-center gap-1 text-stone-600">
+                <MapPin className="w-3.5 h-3.5 text-brand" /> Delivery fee calculated by location and confirmed on WhatsApp
               </span>
               <span>•</span>
               <span>24 to 48-hr Dispatch</span>
@@ -182,9 +205,9 @@ export default function Hero() {
             <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
               {/* Product Card Container */}
               <div className="bg-white p-2.5 sm:p-4 rounded-2xl sm:rounded-3xl shadow-warm-lg border border-bamboo-200/80 relative overflow-hidden group">
-                {/* Floating Top Badge */}
+                {/* Floating Top Badge with exact price */}
                 <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-20 bg-forest-950/90 backdrop-blur-md text-amber-300 text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg flex items-center gap-1.5 border border-forest-700">
-                  <Layers className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  <Layers className="w-3.5 h-3.5" />
                   <span>{heroImages[activeImageIndex].tag}</span>
                 </div>
 
@@ -199,7 +222,7 @@ export default function Hero() {
                     alt={heroImages[activeImageIndex].title}
                     fill
                     priority
-                    className="object-contain sm:object-cover object-center transition-all duration-500 group-hover/img:scale-105"
+                    className="object-contain object-center transition-all duration-500 group-hover/img:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
@@ -211,13 +234,18 @@ export default function Hero() {
                   </div>
 
                   {/* Bottom Image Overlay Label */}
-                  <div className="absolute bottom-3 left-3 right-3 text-white z-10">
-                    <span className="text-[10px] uppercase tracking-wider text-amber-300 font-bold block">
-                      Authentic Bamboo Nesting Trays
+                  <div className="absolute bottom-3 left-3 right-3 text-white z-10 flex items-end justify-between">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-wider text-amber-300 font-bold block">
+                        Set of 3 Handcrafted Trays
+                      </span>
+                      <h3 className="font-display font-bold text-sm sm:text-base">
+                        {heroImages[activeImageIndex].title.split('—')[0]}
+                      </h3>
+                    </div>
+                    <span className="bg-amber-400 text-forest-950 font-black text-xs px-2.5 py-1 rounded-lg">
+                      {heroImages[activeImageIndex].price}
                     </span>
-                    <h3 className="font-display font-bold text-sm sm:text-base">
-                      {heroImages[activeImageIndex].title}
-                    </h3>
                   </div>
                 </div>
 
@@ -237,11 +265,11 @@ export default function Hero() {
                         src={img.src}
                         alt={img.title}
                         fill
-                        className="object-contain sm:object-cover rounded"
+                        className="object-contain rounded"
                         sizes="120px"
                       />
-                      <span className="absolute bottom-1 right-1 bg-black/75 text-white text-[8px] sm:text-[9px] font-bold px-1 rounded">
-                        Style {idx === 0 ? 'A' : idx === 1 ? 'B' : 'C'}
+                      <span className="absolute bottom-1 right-1 bg-black/80 text-white text-[8px] sm:text-[9px] font-bold px-1 rounded">
+                        {img.price}
                       </span>
                     </button>
                   ))}

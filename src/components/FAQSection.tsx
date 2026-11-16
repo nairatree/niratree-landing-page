@@ -5,14 +5,14 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const faqs = [
   {
-    question: 'Can I pay when the dispatch rider arrives at my address?',
+    question: 'How is the delivery fee calculated?',
     answer:
-      'Yes, 100%! We offer Pay on Delivery nationwide. You only hand cash or do an instant bank transfer to the dispatch rider when your package arrives safely at your doorstep.',
+      'Delivery fees vary across Nigeria based on your specific city and address. To ensure total transparency and the lowest possible dispatch cost, we calculate the exact delivery fee based on your location and confirm it directly with you on WhatsApp before dispatch.',
   },
   {
-    question: 'Am I allowed to open and inspect the trays before paying?',
+    question: 'How does the WhatsApp order confirmation work?',
     answer:
-      'Yes! We encourage every customer to inspect the package in the presence of the dispatch rider. Confirm the bamboo quality, smooth finish, and correct style before making payment.',
+      'When you click "Confirm Order", your details are recorded immediately, and a pre-formatted message opens in WhatsApp. Our team will review your location, inform you of the exact dispatch fee, and verify your availability before sending out the rider.',
   },
   {
     question: 'How long does delivery take to my state?',

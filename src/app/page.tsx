@@ -11,6 +11,7 @@ import StyleSelector from '@/components/StyleSelector';
 import LifestyleOccasions from '@/components/LifestyleOccasions';
 import PricingPackages from '@/components/PricingPackages';
 import WhatsAppReviews from '@/components/WhatsAppReviews';
+import VIPGroupBanner from '@/components/VIPGroupBanner';
 import OrderForm from '@/components/OrderForm';
 import FAQSection from '@/components/FAQSection';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
@@ -60,6 +61,9 @@ export default function HomePage() {
 
       {/* Social Proof & WhatsApp Styled Customer Reviews */}
       <WhatsAppReviews />
+
+      {/* Exclusive VIP WhatsApp Community Banner */}
+      <VIPGroupBanner />
 
       {/* The Pre-Qualification Order Form & Dual Action Funnel */}
       <OrderForm

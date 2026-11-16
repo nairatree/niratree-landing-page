@@ -29,7 +29,7 @@ export default function StickyMobileCTA() {
   }, []);
 
   const handleScrollToForm = () => {
-    trackInitiateCheckout('Sticky Mobile CTA', 28500);
+    trackInitiateCheckout('Sticky Mobile CTA', 25000);
     const form = document.getElementById('order-form');
     if (form) {
       form.scrollIntoView({ behavior: 'smooth' });
@@ -44,10 +44,10 @@ export default function StickyMobileCTA() {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1 text-[10px] text-emerald-700 font-bold uppercase tracking-wider truncate">
             <ShieldCheck className="w-3 h-3 text-emerald-600 flex-shrink-0" />
-            <span>Pay on Delivery</span>
+            <span>100% Bamboo · Set of 3</span>
           </div>
           <div className="text-xs font-black text-forest-950 truncate">
-            From ₦28,500 <span className="text-[10px] text-stone-400 font-normal">/ 3 Trays</span>
+            From ₦25,000 <span className="text-[10px] text-stone-500 font-normal">(Delivery by location)</span>
           </div>
         </div>
 
@@ -55,7 +55,7 @@ export default function StickyMobileCTA() {
           onClick={handleScrollToForm}
           className="py-2.5 px-4 bg-cta hover:bg-cta-hover text-white rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-cta active:scale-95 transition-all flex-shrink-0 whitespace-nowrap"
         >
-          <span>ORDER NOW</span>
+          <span>CONFIRM ORDER</span>
           <ArrowRight className="w-3 h-3" />
         </button>
       </div>

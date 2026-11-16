@@ -1,4 +1,4 @@
-export type TrayStyleId = 'rectangular' | 'rounded' | 'oval' | 'combo';
+export type TrayStyleId = 'rectangular' | 'oval' | 'rounded' | 'combo';
 
 export type PackageId = 'package_1' | 'package_2' | 'package_3';
 
@@ -11,6 +11,8 @@ export interface TrayStyleOption {
   description: string;
   image: string;
   tag: string;
+  price: number;
+  originalPrice: number;
 }
 
 export interface PricingPackageOption {

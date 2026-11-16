@@ -33,10 +33,10 @@ export default function PricingPackages({ onSelectPackage }: PricingPackagesProp
             <span>Limited Promotional Pricing</span>
           </div>
           <h2 className="text-xl sm:text-3xl lg:text-4xl font-black text-forest-950 tracking-tight">
-            Select Your Package &amp; Pay on Delivery
+            Select Your Package &amp; Confirm Order
           </h2>
           <p className="mt-2 text-xs sm:text-base text-stone-600">
-            Every set comes with our 100% Bamboo Quality Guarantee and Free Delivery Across Nigeria.
+            Every set comes with our 100% Natural Bamboo Quality Guarantee. Delivery fee is calculated based on location and confirmed via WhatsApp.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export default function PricingPackages({ onSelectPackage }: PricingPackagesProp
                   <div className="py-3 sm:py-4 border-y border-stone-100 mb-4 sm:mb-6">
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl sm:text-4xl font-black text-forest-900">
-                        {formatPrice(pkg.price)}
+                        {pkg.id === 'package_1' ? `From ${formatPrice(pkg.price)}` : formatPrice(pkg.price)}
                       </span>
                       <span className="text-xs sm:text-sm text-stone-400 line-through">
                         {formatPrice(pkg.originalPrice)}
@@ -104,17 +104,17 @@ export default function PricingPackages({ onSelectPackage }: PricingPackagesProp
                         : 'bg-forest-900 hover:bg-forest-800 text-cream-50'
                     }`}
                   >
-                    <span>CLAIM THIS PACKAGE</span>
+                    <span>CONFIRM ORDER</span>
                     <ArrowRight className="w-4 h-4 flex-shrink-0" />
                   </button>
 
                   <div className="flex items-center justify-center gap-3 text-[10px] sm:text-[11px] text-stone-500 font-medium">
                     <span className="flex items-center gap-1">
-                      <Truck className="w-3 h-3 text-emerald-600" /> Free Shipping
+                      <Truck className="w-3 h-3 text-stone-600" /> Delivery Calculated by State
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
-                      <ShieldCheck className="w-3 h-3 text-amber-500" /> Pay On Delivery
+                      <ShieldCheck className="w-3 h-3 text-emerald-600" /> 100% Bamboo Guarantee
                     </span>
                   </div>
                 </div>

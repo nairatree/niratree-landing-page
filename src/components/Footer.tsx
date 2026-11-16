@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShieldCheck, Truck, Phone, Lock, Heart } from 'lucide-react';
-import { BRAND_NAME } from '@/lib/constants';
+import { BRAND_NAME, VIP_WHATSAPP_GROUP_URL } from '@/lib/constants';
 
 export default function Footer() {
   const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '2349134837317';
@@ -60,6 +60,16 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a
+                  href={VIP_WHATSAPP_GROUP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-300 font-bold hover:text-amber-200 transition-colors"
+                >
+                  🌟 Join VIP WhatsApp Group
+                </a>
+              </li>
+              <li>
                 <Link href="/admin" className="hover:text-amber-400 transition-colors flex items-center gap-1 text-stone-400">
                   <Lock className="w-3 h-3" /> Admin Portal
                 </Link>
@@ -75,15 +85,25 @@ export default function Footer() {
             <p className="text-xs text-stone-400 leading-relaxed">
               Have questions regarding your order or dispatch rider timeline?
             </p>
-            <a
-              href={`https://wa.me/${whatsappPhone}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-forest-900 border border-forest-700 hover:border-emerald-500 text-xs font-bold text-white transition-all"
-            >
-              <Phone className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Chat WhatsApp Support</span>
-            </a>
+            <div className="flex flex-col gap-2">
+              <a
+                href={`https://wa.me/${whatsappPhone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-forest-900 border border-forest-700 hover:border-emerald-500 text-xs font-bold text-white transition-all"
+              >
+                <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Chat WhatsApp Support</span>
+              </a>
+              <a
+                href={VIP_WHATSAPP_GROUP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#005c39] hover:bg-[#007045] border border-emerald-400/40 text-xs font-bold text-white transition-all"
+              >
+                <span>🌟 Join VIP WhatsApp Group</span>
+              </a>
+            </div>
             <div className="text-[11px] text-stone-500 pt-1">
               Working Hours: Mon – Sat: 8:00 AM – 7:00 PM
             </div>

@@ -42,14 +42,14 @@ describe('NiraTree Order & Funnel Automated Verification Suite', () => {
     assert.equal(created.state, 'Lagos');
     assert.equal(created.package_name, 'Double Set (6 Trays — Best Value)');
     assert.equal(created.tray_style_name, 'Style A: Classic Rectangular');
-    assert.equal(created.total_price, 52000);
+    assert.equal(created.total_price, 49000);
     assert.equal(created.status, 'New');
 
     // Query back from database
     const fetched = getOrderById(created.id!);
     assert.ok(fetched, 'Expected order to be retrievable from database');
     assert.equal(fetched.order_number, created.order_number);
-    assert.equal(fetched.total_price, 52000);
+    assert.equal(fetched.total_price, 49000);
   });
 
   it('3. Should generate properly encoded WhatsApp URLs with zero malformed characters', () => {
@@ -123,8 +123,40 @@ describe('NiraTree Order & Funnel Automated Verification Suite', () => {
     assert.ok(typeof stats.totalOrders === 'number');
     assert.ok(typeof stats.totalRevenue === 'number');
     assert.ok(stats.totalOrders >= 2);
-    assert.ok(stats.totalRevenue >= (52000 + 28500));
+    assert.ok(stats.totalRevenue >= (49000 + 28000));
     assert.ok(stats.statusCounts['Delivered'] >= 1);
+  });
+
+  it('6. Should enforce exact pricing for each tray style (25k Rectangular, 26k Oval, 28k Curved)', () => {
+    const recOrder = createOrder({
+      full_name: 'Test Customer A',
+      whatsapp_phone: '08011112222',
+      delivery_address: 'Test Address Lagos',
+      state: 'Lagos',
+      package_id: 'package_1',
+      tray_style: 'rectangular',
+    });
+    assert.equal(recOrder.total_price, 25000);
+
+    const ovalOrder = createOrder({
+      full_name: 'Test Customer B',
+      whatsapp_phone: '08011112223',
+      delivery_address: 'Test Address Abuja',
+      state: 'Abuja (FCT)',
+      package_id: 'package_1',
+      tray_style: 'oval',
+    });
+    assert.equal(ovalOrder.total_price, 26000);
+
+    const curvedOrder = createOrder({
+      full_name: 'Test Customer C',
+      whatsapp_phone: '08011112224',
+      delivery_address: 'Test Address Ibadan',
+      state: 'Oyo (Ibadan)',
+      package_id: 'package_1',
+      tray_style: 'rounded',
+    });
+    assert.equal(curvedOrder.total_price, 28000);
   });
 
   it('6. Should filter and search orders by text or state', () => {

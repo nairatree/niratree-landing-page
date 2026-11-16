@@ -506,7 +506,7 @@ export default function AdminPage() {
                           <div className="font-black text-cta text-sm">
                             {formatNaira(order.total_price)}
                           </div>
-                          <div className="text-[10px] text-stone-400">Pay on Delivery</div>
+                          <div className="text-[10px] text-stone-400">Product Price (excl. shipping)</div>
                         </td>
 
                         {/* Status Badge & Dropdown */}

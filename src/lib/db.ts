@@ -88,6 +88,12 @@ export function createOrder(input: CreateOrderInput): OrderRecord {
   const selectedPackage = PRICING_PACKAGES.find(p => p.id === input.package_id) || PRICING_PACKAGES[0];
   const selectedStyle = TRAY_STYLES.find(s => s.id === input.tray_style) || TRAY_STYLES[0];
 
+  // Dynamic pricing based on package and selected style
+  let computedPrice = selectedPackage.price;
+  if (input.package_id === 'package_1') {
+    computedPrice = selectedStyle.price;
+  }
+
   const orderNumber = generateOrderNumber();
   const createdAt = new Date().toISOString();
   const status: OrderStatus = 'New';
@@ -129,7 +135,7 @@ export function createOrder(input: CreateOrderInput): OrderRecord {
     selectedPackage.name,
     input.tray_style,
     selectedStyle.name,
-    selectedPackage.price,
+    computedPrice,
     input.preferred_date?.trim() || null,
     input.special_instructions?.trim() || null,
     status,
@@ -151,7 +157,7 @@ export function createOrder(input: CreateOrderInput): OrderRecord {
     package_name: selectedPackage.name,
     tray_style: input.tray_style,
     tray_style_name: selectedStyle.name,
-    total_price: selectedPackage.price,
+    total_price: computedPrice,
     preferred_date: input.preferred_date?.trim(),
     special_instructions: input.special_instructions?.trim(),
     status,

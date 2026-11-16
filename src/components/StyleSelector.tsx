@@ -78,7 +78,7 @@ export default function StyleSelector({ onSelectStyle }: StyleSelectorProps) {
                     : 'bg-white text-stone-700 border-stone-200 hover:border-bamboo-400'
                 }`}
               >
-                <span className="truncate">{getShortName(style.id)}</span>
+                <span className="truncate">{getShortName(style.id)} · ₦{style.price.toLocaleString('en-NG')}</span>
                 {isActive && <Check className="w-3.5 h-3.5 text-amber-300 hidden sm:inline" />}
               </button>
             );
@@ -175,7 +175,7 @@ export default function StyleSelector({ onSelectStyle }: StyleSelectorProps) {
                   onClick={() => handleSelectAndScroll(currentStyle.id)}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-cta hover:bg-cta-hover text-white px-5 sm:px-8 py-3.5 sm:py-4 rounded-xl font-black text-xs sm:text-base shadow-cta hover:shadow-lg transition-all active:scale-95"
                 >
-                  <span>Select {getShortName(currentStyle.id)} &amp; Order</span>
+                  <span>CONFIRM ORDER ({getShortName(currentStyle.id)} · ₦{currentStyle.price.toLocaleString('en-NG')})</span>
                   <ArrowRight className="w-4 h-4 flex-shrink-0" />
                 </button>
               </div>

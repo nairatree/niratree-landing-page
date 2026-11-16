@@ -4,9 +4,9 @@ import MetaPixel from '@/components/MetaPixel';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
-  title: 'NairaTree™ — Handcrafted Bamboo Serving Trays (Set of 3) | Pay on Delivery',
+  title: 'NairaTree™ — Handcrafted Bamboo Serving Trays (Set of 3)',
   description:
-    'Upgrade your home and host guests in style with NairaTree handcrafted bamboo serving trays. 100% natural, deep spill-proof edges, space-saving 3-in-1 nesting design. Free nationwide delivery across Nigeria + Pay on Delivery.',
+    'Upgrade your home and host guests in style with NairaTree handcrafted bamboo serving trays. 100% natural, deep spill-proof edges, space-saving 3-in-1 nesting design. Fast delivery across Nigeria.',
   keywords: [
     'bamboo serving trays',
     'nesting trays Nigeria',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'wooden serving tray',
     'breakfast in bed tray',
     'ottoman tray Lagos',
-    'pay on delivery trays Nigeria',
+    'luxury bamboo trays Nigeria',
     'NairaTree',
   ],
   icons: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'NairaTree™ Handcrafted Bamboo Serving Trays (Set of 3)',
-    description: '100% Eco-Friendly Natural Bamboo Nesting Trays. Free Nationwide Delivery + Pay on Delivery Available.',
+    description: '100% Eco-Friendly Natural Bamboo Nesting Trays. Fast Delivery Across Nigeria.',
     images: ['/images/nairatree-logo-green.jpg'],
     type: 'website',
   },
