@@ -6,34 +6,16 @@ import { Check, X, ShieldCheck } from 'lucide-react';
 export default function BambooVsOthers() {
   const comparison = [
     {
-      feature: 'Visual Appeal & Luxury Feel',
-      nairatree: 'Warm natural bamboo grain, 5-star hotel elegance',
-      plastic: 'Looks cheap, shows scratches, degrades quickly',
-      metal: 'Cold, industrial, easily loses shine & tarnishes',
+      feature: 'Luxury Aesthetic & Durability',
+      nairatree: 'Warm 100% natural bamboo grain, 5-star hotel elegance that lasts years',
+      plastic: 'Looks cheap, easily cracks, scratches and discolors quickly',
+      metal: 'Cold, heavy, easily tarnishes, loses luster and scratches tables',
     },
     {
-      feature: 'Spill & Edge Protection',
-      nairatree: 'Deep 1.8-inch raised rim, zero table spills',
-      plastic: 'Flat shallow lips, fluids easily leak over',
-      metal: 'Low borders with dangerous sharp edges',
-    },
-    {
-      feature: 'Space-Saving Storage',
-      nairatree: '3 Trays nest seamlessly into 1 compact unit',
-      plastic: 'Awkward stacking that topples inside cupboards',
-      metal: 'Heavy & bulky, scratches kitchen cabinets',
-    },
-    {
-      feature: 'Heat & Stain Resistance',
-      nairatree: 'Naturally heat resistant; wipes clean effortlessly',
-      plastic: 'Warps with boiling tea; stains from palm oil/stew',
-      metal: 'Conducts scorching heat; burns bare hands',
-    },
-    {
-      feature: 'Safety & Hygiene',
-      nairatree: 'Naturally antimicrobial, 100% organic & non-toxic',
-      plastic: 'Contains harmful BPA and microplastic leeching',
-      metal: 'Prone to rust spots, flaking paint and corrosion',
+      feature: '3-in-1 Space-Saving & Spill Protection',
+      nairatree: 'All 3 trays nest flush into 1 unit + deep raised spill-proof rim',
+      plastic: 'Cluttered stacking that topples in cabinets; flat leaking edges',
+      metal: 'Bulky & heavy to lift; low borders with dangerous sharp corners',
     },
   ];
 

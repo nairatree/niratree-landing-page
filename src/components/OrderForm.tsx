@@ -52,20 +52,33 @@ export default function OrderForm({
 
   // Sync props if parent changes
   useEffect(() => {
-    if (initialPackageId) setSelectedPackageId(initialPackageId);
+    if (initialPackageId) {
+      setSelectedPackageId(initialPackageId);
+      const pkg = PRICING_PACKAGES.find(p => p.id === initialPackageId);
+      if (pkg && pkg.styleId) {
+        setSelectedStyleId(pkg.styleId);
+      }
+    }
   }, [initialPackageId]);
 
   useEffect(() => {
-    if (initialStyleId) setSelectedStyleId(initialStyleId);
+    if (initialStyleId) {
+      setSelectedStyleId(initialStyleId);
+      const pkg = PRICING_PACKAGES.find(p => p.styleId === initialStyleId);
+      if (pkg) {
+        setSelectedPackageId(pkg.id);
+      }
+    }
   }, [initialStyleId]);
 
-  const selectedPackage =
-    PRICING_PACKAGES.find((p) => p.id === selectedPackageId) || PRICING_PACKAGES[1];
   const selectedStyle =
     TRAY_STYLES.find((s) => s.id === selectedStyleId) || TRAY_STYLES[0];
+  const selectedPackage =
+    PRICING_PACKAGES.find((p) => p.styleId === selectedStyle.id) ||
+    PRICING_PACKAGES.find((p) => p.id === selectedPackageId) ||
+    PRICING_PACKAGES[0];
 
-  const currentPrice =
-    selectedPackageId === 'package_1' ? selectedStyle.price : selectedPackage.price;
+  const currentPrice = selectedStyle.price;
 
   const formatPrice = (amount: number) => '₦' + amount.toLocaleString('en-NG');
 
@@ -192,113 +205,72 @@ export default function OrderForm({
 
           {/* Form Element */}
           <form onSubmit={handleSubmit} className="p-4 sm:p-8 lg:p-10 space-y-6 sm:space-y-8">
-            {/* Step 1: Select Pricing Package */}
+            {/* Step 1: Select Handcrafted Tray Set */}
             <div>
               <label className="text-xs sm:text-sm font-black text-forest-950 uppercase tracking-wide mb-2 sm:mb-3 flex items-center gap-2">
                 <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-forest-900 text-cream-50 text-[10px] sm:text-xs flex items-center justify-center font-bold">
                   1
                 </span>
-                <span>Select Your Package</span>
+                <span>Select Your Tray Style (Each Set Includes 3 Nesting Trays: S, M, L)</span>
               </label>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-3">
-                {PRICING_PACKAGES.map((pkg) => {
-                  const isSelected = selectedPackageId === pkg.id;
-                  return (
-                    <div
-                      key={pkg.id}
-                      onClick={() => setSelectedPackageId(pkg.id)}
-                      className={`cursor-pointer rounded-xl sm:rounded-2xl p-3.5 sm:p-4 border-2 transition-all relative ${
-                        isSelected
-                          ? 'border-cta bg-cream-50 shadow-md ring-2 ring-cta/20'
-                          : 'border-stone-200 hover:border-bamboo-300 bg-white'
-                      }`}
-                    >
-                      {pkg.isPopular && (
-                        <span className="absolute -top-2.5 right-3 bg-cta text-white text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
-                          Popular
-                        </span>
-                      )}
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <div className="font-bold text-xs sm:text-sm text-forest-950">{pkg.name}</div>
-                          <div className="text-[11px] text-stone-500">{pkg.trayCount} Trays Included</div>
-                        </div>
-                        <div
-                          className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border flex items-center justify-center flex-shrink-0 ${
-                            isSelected
-                              ? 'bg-cta border-cta text-white'
-                              : 'border-stone-300'
-                          }`}
-                        >
-                          {isSelected && <Check className="w-3 h-3" />}
-                        </div>
-                      </div>
-
-                      <div className="mt-2.5 pt-2.5 border-t border-stone-100 flex items-baseline justify-between">
-                        <span className="text-base sm:text-lg font-black text-forest-900">
-                          {pkg.id === 'package_1' ? `From ${formatPrice(pkg.price)}` : formatPrice(pkg.price)}
-                        </span>
-                        <span className="text-[11px] sm:text-xs text-stone-400 line-through">
-                          {formatPrice(pkg.originalPrice)}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Step 2: Select Tray Style */}
-            <div>
-              <label className="text-xs sm:text-sm font-black text-forest-950 uppercase tracking-wide mb-2 sm:mb-3 flex items-center gap-2">
-                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-forest-900 text-cream-50 text-[10px] sm:text-xs flex items-center justify-center font-bold">
-                  2
-                </span>
-                <span>Select Your Tray Style</span>
-              </label>
-
-              <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {TRAY_STYLES.map((style) => {
                   const isSelected = selectedStyleId === style.id;
-                  const label = style.id === 'rectangular' ? 'Rectangular' : style.id === 'rounded' ? 'Rounded' : 'Oval';
+                  const matchingPkg = PRICING_PACKAGES.find(p => p.styleId === style.id) || PRICING_PACKAGES[0];
                   return (
                     <div
                       key={style.id}
-                      onClick={() => setSelectedStyleId(style.id)}
-                      className={`cursor-pointer rounded-xl sm:rounded-2xl p-2 sm:p-3 border-2 transition-all relative flex flex-col justify-between ${
+                      onClick={() => {
+                        setSelectedStyleId(style.id);
+                        setSelectedPackageId(matchingPkg.id);
+                      }}
+                      className={`cursor-pointer rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all relative flex flex-col justify-between ${
                         isSelected
                           ? 'border-cta bg-cream-50 shadow-md ring-2 ring-cta/20'
                           : 'border-stone-200 hover:border-bamboo-300 bg-white'
                       }`}
                     >
-                      <div className="relative aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden mb-1.5">
+                      <div className="relative aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden mb-2 bg-stone-100">
                         <Image
                           src={style.image}
                           alt={style.name}
                           fill
-                          className="object-cover"
-                          sizes="150px"
+                          className="object-contain"
+                          sizes="(max-width: 768px) 100vw, 300px"
                         />
+                        <div className="absolute top-2 left-2 bg-forest-950/80 text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                          Set of 3 Trays
+                        </div>
                       </div>
-                      <div className="flex items-center justify-between">
-                        <div className="truncate">
-                          <span className="font-bold text-[11px] sm:text-xs text-forest-950 block truncate">
-                            {label}
-                          </span>
-                          <span className="text-[10px] text-emerald-700 font-extrabold block">
-                            ₦{style.price.toLocaleString('en-NG')}
-                          </span>
+
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <div className="font-black text-xs sm:text-sm text-forest-950 leading-tight mb-0.5">
+                            {style.name}
+                          </div>
+                          <div className="text-[11px] text-stone-500">
+                            Small, Medium &amp; Large Trays
+                          </div>
                         </div>
                         <div
-                          className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border flex items-center justify-center flex-shrink-0 ${
+                          className={`w-5 h-5 rounded-full border flex items-center justify-center flex-shrink-0 ${
                             isSelected
                               ? 'bg-cta border-cta text-white'
                               : 'border-stone-300'
                           }`}
                         >
-                          {isSelected && <Check className="w-2.5 h-2.5" />}
+                          {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
                         </div>
+                      </div>
+
+                      <div className="mt-2.5 pt-2 border-t border-stone-100 flex items-baseline justify-between">
+                        <span className="text-base sm:text-lg font-black text-forest-900">
+                          {formatPrice(style.price)}
+                        </span>
+                        <span className="text-xs text-stone-400 line-through">
+                          {formatPrice(style.originalPrice)}
+                        </span>
                       </div>
                     </div>
                   );
@@ -306,11 +278,11 @@ export default function OrderForm({
               </div>
             </div>
 
-            {/* Step 3: Customer Delivery Details */}
+            {/* Step 2: Customer Delivery Details */}
             <div className="space-y-3.5 sm:space-y-4">
               <label className="text-xs sm:text-sm font-black text-forest-950 uppercase tracking-wide mb-1 flex items-center gap-2">
                 <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-forest-900 text-cream-50 text-[10px] sm:text-xs flex items-center justify-center font-bold">
-                  3
+                  2
                 </span>
                 <span>Your Delivery Details</span>
               </label>
@@ -472,12 +444,8 @@ export default function OrderForm({
             {/* Order Summary Box */}
             <div className="bg-cream-100 rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-bamboo-200/80 space-y-2">
               <div className="flex justify-between text-xs text-stone-600">
-                <span>Selected Package:</span>
-                <span className="font-bold text-forest-950">{selectedPackage.name}</span>
-              </div>
-              <div className="flex justify-between text-xs text-stone-600">
-                <span>Selected Style:</span>
-                <span className="font-bold text-forest-950">{selectedStyle.name}</span>
+                <span>Selected Set:</span>
+                <span className="font-bold text-forest-950">{selectedStyle.name} (Set of 3 Trays)</span>
               </div>
               <div className="flex justify-between text-xs text-stone-600">
                 <span>Delivery Fee:</span>

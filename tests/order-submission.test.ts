@@ -27,7 +27,7 @@ describe('NiraTree Order & Funnel Automated Verification Suite', () => {
       delivery_address: 'Plot 12 Admiralty Way, opposite Zenith Bank',
       state: 'Lagos',
       city: 'Lekki Phase 1',
-      package_id: 'package_2' as const,
+      package_id: 'package_1' as const,
       tray_style: 'rectangular' as const,
       preferred_date: 'Tomorrow afternoon',
       special_instructions: 'Call at the security gate',
@@ -40,16 +40,16 @@ describe('NiraTree Order & Funnel Automated Verification Suite', () => {
     assert.equal(created.full_name, 'Chief Olumide Adeleke');
     assert.equal(created.whatsapp_phone, '08035551234');
     assert.equal(created.state, 'Lagos');
-    assert.equal(created.package_name, 'Double Set (6 Trays — Best Value)');
+    assert.equal(created.package_name, 'Classic Rectangular Set (3 Trays)');
     assert.equal(created.tray_style_name, 'Style A: Classic Rectangular');
-    assert.equal(created.total_price, 49000);
+    assert.equal(created.total_price, 25000);
     assert.equal(created.status, 'New');
 
     // Query back from database
     const fetched = getOrderById(created.id!);
     assert.ok(fetched, 'Expected order to be retrievable from database');
     assert.equal(fetched.order_number, created.order_number);
-    assert.equal(fetched.total_price, 49000);
+    assert.equal(fetched.total_price, 25000);
   });
 
   it('3. Should generate properly encoded WhatsApp URLs with zero malformed characters', () => {
@@ -57,21 +57,21 @@ describe('NiraTree Order & Funnel Automated Verification Suite', () => {
       order_number: 'NT-TEST999',
       full_name: 'Dr. Halima & Mrs. Bello',
       whatsapp_phone: '08123456789',
-      package_name: 'The Complete NairaTree Trio (9 Trays)',
-      tray_style_name: 'Style C: Elegant Oval',
-      total_price: 74000,
+      package_name: 'Curved Edge Set (3 Trays)',
+      tray_style_name: 'Style C: Curved Edge',
+      total_price: 28000,
       delivery_address: '15 Crescent Road, off GRA',
       state: 'Rivers',
       city: 'Port Harcourt',
     };
 
-    const businessPhone = '2349134837317';
+    const businessPhone = '2349047125385';
     const url = buildCustomerOrderWhatsAppUrl(mockOrder, businessPhone);
 
-    assert.ok(url.startsWith('https://wa.me/2349134837317?text='), 'Must target sanitized business phone');
+    assert.ok(url.startsWith('https://wa.me/2349047125385?text='), 'Must target sanitized business phone');
     assert.ok(url.includes(encodeURIComponent('NT-TEST999')), 'Must contain encoded order number');
     assert.ok(url.includes(encodeURIComponent('Dr. Halima & Mrs. Bello')), 'Must safely encode ampersands and special characters');
-    assert.ok(url.includes(encodeURIComponent('₦74,000')), 'Must include formatted Naira price');
+    assert.ok(url.includes(encodeURIComponent('₦28,000')), 'Must include formatted Naira price');
     assert.ok(url.includes(encodeURIComponent('Port Harcourt, Rivers State')), 'Must include city and state');
     // Ensure line breaks are encoded as %0A
     assert.ok(url.includes('%0A'), 'Must have encoded multi-line breaks for WhatsApp readability');
@@ -82,7 +82,7 @@ describe('NiraTree Order & Funnel Automated Verification Suite', () => {
       id: 99,
       created_at: new Date().toISOString(),
       package_id: 'package_3' as const,
-      tray_style: 'oval' as const,
+      tray_style: 'rounded' as const,
       status: 'New' as const,
     };
     const adminUrl = buildAdminChatWhatsAppUrl(fullOrder);
@@ -123,7 +123,7 @@ describe('NiraTree Order & Funnel Automated Verification Suite', () => {
     assert.ok(typeof stats.totalOrders === 'number');
     assert.ok(typeof stats.totalRevenue === 'number');
     assert.ok(stats.totalOrders >= 2);
-    assert.ok(stats.totalRevenue >= (49000 + 28000));
+    assert.ok(stats.totalRevenue >= (25000 + 28000));
     assert.ok(stats.statusCounts['Delivered'] >= 1);
   });
 

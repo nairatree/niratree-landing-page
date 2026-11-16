@@ -10,7 +10,7 @@ export default function SolutionSection() {
       icon: Sparkles,
       title: '100% Pure Organic Bamboo',
       description:
-        'Crafted from high-density, sustainably harvested bamboo. 3x stronger than standard timber, naturally splinter-free, antimicrobial, and conditioned to resist heat and oil without warping.',
+        'Crafted from high-density, sustainably harvested bamboo. 3x stronger than standard timber, naturally splinter-free, antimicrobial, and conditioned to resist heat and spills.',
     },
     {
       icon: Layers,
@@ -19,16 +19,10 @@ export default function SolutionSection() {
         'Small, Medium, and Large trays fit flush inside each other. You get 3 versatile serving sizes for every occasion, yet they consume the cabinet space of a single tray.',
     },
     {
-      icon: Droplet,
-      title: 'Deep Raised Spill-Proof Rims',
-      description:
-        'Each tray features an elevated 1.8-inch lip that acts as a secure barrier. Dripping tea, soup splashes, and rolled fruits remain safely inside the tray, protecting your furniture.',
-    },
-    {
       icon: ShieldCheck,
-      title: 'Ergonomic Dual Cut-Out Handles',
+      title: 'Deep Spill-Proof Rims & Grip Handles',
       description:
-        'Engineered with smooth beveled cut-out handles that fit fingers comfortably. Carry full breakfast spreads or heavy glass tumblers with complete confidence and zero hand strain.',
+        'Each tray features an elevated raised lip that prevents hot spills and rolling food, paired with smooth cut-out handles for effortless, balanced carry.',
     },
   ];
 
@@ -48,8 +42,8 @@ export default function SolutionSection() {
           </p>
         </div>
 
-        {/* Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Feature Cards Grid (3 Columns) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (

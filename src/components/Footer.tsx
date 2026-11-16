@@ -7,7 +7,7 @@ import { ShieldCheck, Truck, Phone, Lock, Heart } from 'lucide-react';
 import { BRAND_NAME, VIP_WHATSAPP_GROUP_URL } from '@/lib/constants';
 
 export default function Footer() {
-  const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '2349134837317';
+  const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '2349047125385';
 
   return (
     <footer className="bg-[#091F16] text-stone-300 pt-16 pb-24 sm:pb-16 border-t border-forest-800">
@@ -93,7 +93,7 @@ export default function Footer() {
                 className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-forest-900 border border-forest-700 hover:border-emerald-500 text-xs font-bold text-white transition-all"
               >
                 <Phone className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Chat WhatsApp Support</span>
+                <span>Chat WhatsApp (0904 712 5385)</span>
               </a>
               <a
                 href={VIP_WHATSAPP_GROUP_URL}

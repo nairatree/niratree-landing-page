@@ -12,7 +12,7 @@ describe('CSV Export & API Security Verification', () => {
       whatsapp_phone: '08035551234',
       delivery_address: 'Plot 12 Admiralty Way, Lekki Phase 1',
       state: 'Lagos',
-      package_id: 'package_2',
+      package_id: 'package_1',
       tray_style: 'rectangular',
     });
 
@@ -55,7 +55,7 @@ describe('CSV Export & API Security Verification', () => {
 
     assert.ok(csv.includes('Order Number,Created At,Full Name'), 'Headers must be present');
     assert.ok(csv.includes('"Chief Olumide Adeleke"'), 'Customer name must be present and quoted');
-    assert.ok(csv.includes('"49000"') || csv.includes('"52000"'), 'Total price must be present');
+    assert.ok(csv.includes('"25000"') || csv.includes('"26000"') || csv.includes('"28000"'), 'Total price must be present');
     assert.ok(csv.includes('Style A: Classic Rectangular'), 'Tray style name must be present');
   });
 

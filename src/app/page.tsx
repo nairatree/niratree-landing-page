@@ -22,12 +22,22 @@ export default function HomePage() {
   const [activePackageId, setActivePackageId] = useState<PackageId>('package_2');
   const [activeStyleId, setActiveStyleId] = useState<TrayStyleId>('rectangular');
 
-  const handleSelectPackage = (packageId: PackageId) => {
+  const handleSelectPackage = (packageId: PackageId, styleId?: TrayStyleId) => {
     setActivePackageId(packageId);
+    if (styleId) {
+      setActiveStyleId(styleId);
+    } else {
+      if (packageId === 'package_1') setActiveStyleId('rectangular');
+      else if (packageId === 'package_2') setActiveStyleId('oval');
+      else if (packageId === 'package_3') setActiveStyleId('rounded');
+    }
   };
 
   const handleSelectStyle = (styleId: TrayStyleId) => {
     setActiveStyleId(styleId);
+    if (styleId === 'rectangular') setActivePackageId('package_1');
+    else if (styleId === 'oval') setActivePackageId('package_2');
+    else if (styleId === 'rounded') setActivePackageId('package_3');
   };
 
   return (
@@ -53,6 +63,9 @@ export default function HomePage() {
       {/* Interactive 3 Design Styles Selector */}
       <StyleSelector onSelectStyle={handleSelectStyle} />
 
+      {/* Exclusive VIP WhatsApp Community Banner (Middle of Page) */}
+      <VIPGroupBanner />
+
       {/* Multi-Purpose Lifestyle Moments */}
       <LifestyleOccasions />
 
@@ -61,9 +74,6 @@ export default function HomePage() {
 
       {/* Social Proof & WhatsApp Styled Customer Reviews */}
       <WhatsAppReviews />
-
-      {/* Exclusive VIP WhatsApp Community Banner */}
-      <VIPGroupBanner />
 
       {/* The Pre-Qualification Order Form & Dual Action Funnel */}
       <OrderForm

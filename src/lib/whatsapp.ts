@@ -27,7 +27,7 @@ export function buildCustomerOrderWhatsAppUrl(
   businessPhone?: string
 ): string {
   const targetPhone = sanitizeWhatsAppPhone(
-    businessPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '2349134837317'
+    businessPhone || process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '2349047125385'
   );
 
   const address = order.city

@@ -24,6 +24,7 @@ export interface PricingPackageOption {
   originalPrice: number;
   price: number;
   savings: number;
+  styleId?: TrayStyleId;
   description: string;
   features: string[];
 }

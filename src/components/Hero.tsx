@@ -109,9 +109,7 @@ export default function Hero() {
             {/* Main Headline */}
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-forest-950 leading-[1.2] sm:leading-[1.15] tracking-tight">
               Upgrade Your Home &amp; Host Guests in Style with{' '}
-              <span className="text-forest-800 underline decoration-bamboo-400 decoration-wavy decoration-2">
-                NairaTree
-              </span>{' '}
+              <span className="text-[#005C37]">NairaTree</span>{' '}
               Handcrafted Bamboo Serving Trays{' '}
               <span className="text-cta block sm:inline font-bold">
                 (Set of 3)

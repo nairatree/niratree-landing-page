@@ -2,19 +2,19 @@
 
 import React from 'react';
 import { PRICING_PACKAGES } from '@/lib/constants';
-import { PackageId } from '@/lib/types';
+import { PackageId, TrayStyleId } from '@/lib/types';
 import { Check, Flame, ArrowRight, ShieldCheck, Truck } from 'lucide-react';
 import { trackInitiateCheckout } from '@/lib/meta-pixel';
 
 interface PricingPackagesProps {
-  onSelectPackage?: (packageId: PackageId) => void;
+  onSelectPackage?: (packageId: PackageId, styleId?: TrayStyleId) => void;
 }
 
 export default function PricingPackages({ onSelectPackage }: PricingPackagesProps) {
   const handleSelectPackage = (pkg: typeof PRICING_PACKAGES[0]) => {
     trackInitiateCheckout(pkg.name, pkg.price);
     if (onSelectPackage) {
-      onSelectPackage(pkg.id);
+      onSelectPackage(pkg.id, pkg.styleId);
     }
     const formElement = document.getElementById('order-form');
     if (formElement) {
@@ -33,10 +33,10 @@ export default function PricingPackages({ onSelectPackage }: PricingPackagesProp
             <span>Limited Promotional Pricing</span>
           </div>
           <h2 className="text-xl sm:text-3xl lg:text-4xl font-black text-forest-950 tracking-tight">
-            Select Your Package &amp; Confirm Order
+            Select Your Tray Set &amp; Confirm Order
           </h2>
           <p className="mt-2 text-xs sm:text-base text-stone-600">
-            Every set comes with our 100% Natural Bamboo Quality Guarantee. Delivery fee is calculated based on location and confirmed via WhatsApp.
+            Each set includes 3 nesting bamboo trays (Small, Medium, Large). Delivery fee is calculated based on location and confirmed via WhatsApp.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export default function PricingPackages({ onSelectPackage }: PricingPackagesProp
                   <div className="py-3 sm:py-4 border-y border-stone-100 mb-4 sm:mb-6">
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl sm:text-4xl font-black text-forest-900">
-                        {pkg.id === 'package_1' ? `From ${formatPrice(pkg.price)}` : formatPrice(pkg.price)}
+                        {formatPrice(pkg.price)}
                       </span>
                       <span className="text-xs sm:text-sm text-stone-400 line-through">
                         {formatPrice(pkg.originalPrice)}

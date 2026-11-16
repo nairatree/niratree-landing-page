@@ -88,10 +88,20 @@ export function createOrder(input: CreateOrderInput): OrderRecord {
   const selectedPackage = PRICING_PACKAGES.find(p => p.id === input.package_id) || PRICING_PACKAGES[0];
   const selectedStyle = TRAY_STYLES.find(s => s.id === input.tray_style) || TRAY_STYLES[0];
 
-  // Dynamic pricing based on package and selected style
-  let computedPrice = selectedPackage.price;
-  if (input.package_id === 'package_1') {
-    computedPrice = selectedStyle.price;
+  // Exact pricing by set / style: Rectangular (25k), Oval (26k), Curved Edge (28k)
+  let computedPrice = selectedStyle.price;
+  if (input.tray_style === 'rectangular') {
+    computedPrice = 25000;
+  } else if (input.tray_style === 'oval') {
+    computedPrice = 26000;
+  } else if (input.tray_style === 'rounded') {
+    computedPrice = 28000;
+  } else if (input.package_id === 'package_1') {
+    computedPrice = 25000;
+  } else if (input.package_id === 'package_2') {
+    computedPrice = 26000;
+  } else if (input.package_id === 'package_3') {
+    computedPrice = 28000;
   }
 
   const orderNumber = generateOrderNumber();
