@@ -17,12 +17,25 @@ const config: Config = {
           400: "#D8C5A8",
         },
         forest: {
-          950: "#091710",
-          900: "#0F261B",
-          800: "#143826",
-          700: "#1C4E35",
-          600: "#256646",
-          500: "#2F7E57",
+          950: "#091F16",
+          900: "#0B2E20",
+          800: "#00472B",
+          700: "#005C37",
+          600: "#007345",
+          500: "#008953", // Official NairaTree Brand Green
+          400: "#00A865",
+          300: "#33BC84",
+          200: "#80D6AF",
+          100: "#D4EFE3",
+          50: "#EBF7F1",
+        },
+        brand: {
+          DEFAULT: "#008953", // Official NairaTree Brand Green
+          hover: "#007345",
+          dark: "#005C37",
+          deep: "#003822",
+          light: "#EBF7F1",
+          subtle: "#F0FAF5",
         },
         bamboo: {
           100: "#F7EFE1",
@@ -49,9 +62,10 @@ const config: Config = {
         display: ["var(--font-display)", "Plus Jakarta Sans", "sans-serif"],
       },
       boxShadow: {
-        'warm': '0 8px 30px rgba(20, 56, 38, 0.08)',
-        'warm-lg': '0 20px 45px rgba(20, 56, 38, 0.12)',
+        'warm': '0 8px 30px rgba(0, 137, 83, 0.08)',
+        'warm-lg': '0 20px 45px rgba(0, 137, 83, 0.12)',
         'cta': '0 10px 25px rgba(226, 88, 34, 0.35)',
+        'brand': '0 10px 25px rgba(0, 137, 83, 0.25)',
       },
       keyframes: {
         shimmer: {

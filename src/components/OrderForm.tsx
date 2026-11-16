@@ -150,15 +150,24 @@ export default function OrderForm({
         {/* Main Card Container */}
         <div className="bg-white rounded-2xl sm:rounded-3xl shadow-warm-lg border border-bamboo-300/80 overflow-hidden">
           {/* Header Banner */}
-          <div className="bg-forest-950 text-white p-5 sm:p-8 text-center relative overflow-hidden">
+          <div className="bg-[#003822] text-white p-5 sm:p-8 text-center relative overflow-hidden">
+            <div className="flex justify-center mb-2">
+              <Image
+                src="/images/nairatree-logo-white.png"
+                alt="NairaTree"
+                width={150}
+                height={30}
+                className="h-7 w-auto object-contain"
+              />
+            </div>
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-400 text-forest-950 text-[10px] sm:text-xs font-black uppercase tracking-wider mb-2">
               <Sparkles className="w-3 h-3" />
               <span>Step-by-Step Order Qualification</span>
             </div>
-            <h2 className="text-xl sm:text-3xl font-black text-white">
-              Claim Your NairaTree Bamboo Trays
+            <h2 className="text-xl sm:text-2xl font-black text-white">
+              Claim Your Handcrafted Bamboo Trays
             </h2>
-            <p className="mt-1 text-xs text-stone-300">
+            <p className="mt-1 text-xs text-stone-200">
               Pay on Delivery Available Nationwide · Free Delivery Today
             </p>
           </div>

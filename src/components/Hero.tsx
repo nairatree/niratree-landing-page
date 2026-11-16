@@ -55,22 +55,26 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Navigation / Brand Header */}
         <div className="flex items-center justify-between pb-4 sm:pb-6 mb-6 sm:mb-8 border-b border-bamboo-200/60">
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-forest-900 text-cream-50 flex items-center justify-center font-bold text-base sm:text-xl shadow-md">
-              <span className="text-amber-400">N</span>T
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <Image
+                src="/images/nairatree-logo.png"
+                alt="NairaTree"
+                width={170}
+                height={34}
+                priority
+                className="h-8 sm:h-9 w-auto object-contain"
+              />
             </div>
-            <div>
-              <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-forest-950">
-                Naira<span className="text-bamboo-600">Tree</span>
-              </span>
-              <span className="block text-[9px] sm:text-[10px] tracking-widest uppercase text-stone-500 font-semibold">
+            <div className="hidden sm:block border-l border-stone-300 pl-3">
+              <span className="block text-[10px] tracking-widest uppercase text-stone-500 font-bold">
                 Handcrafted Home &amp; Living
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-2 bg-white/90 backdrop-blur-sm px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-bamboo-200 text-[10px] sm:text-xs font-semibold text-forest-900 shadow-sm">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+          <div className="flex items-center gap-1.5 sm:gap-2 bg-white/90 backdrop-blur-sm px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-brand/20 text-[10px] sm:text-xs font-semibold text-brand-dark shadow-sm">
+            <ShieldCheck className="w-3.5 h-3.5 text-brand flex-shrink-0" />
             <span className="hidden xs:inline">100% Authentic Quality</span>
             <span className="xs:hidden">Verified Quality</span>
           </div>

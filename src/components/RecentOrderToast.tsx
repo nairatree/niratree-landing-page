@@ -57,7 +57,7 @@ export default function RecentOrderToast() {
           <X className="w-3 h-3" />
         </button>
 
-        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-forest-900 text-amber-300 flex items-center justify-center flex-shrink-0 shadow-sm">
+        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-brand text-amber-300 flex items-center justify-center flex-shrink-0 shadow-sm">
           <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />
         </div>
 

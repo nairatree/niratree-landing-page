@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Lock,
   Download,
@@ -254,18 +255,22 @@ export default function AdminPage() {
       <header className="bg-forest-950 text-white px-4 sm:px-8 py-4 border-b border-forest-800 sticky top-0 z-30">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-forest-800 text-amber-400 font-bold text-lg flex items-center justify-center border border-forest-700">
-              NT
-            </div>
-            <div>
-              <h1 className="font-display font-black text-xl tracking-tight text-white flex items-center gap-2">
-                <span>NairaTree Orders CRM</span>
-                <span className="bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">
+            <Image
+              src="/images/nairatree-logo-white.png"
+              alt="NairaTree"
+              width={140}
+              height={28}
+              className="h-7 w-auto object-contain"
+            />
+            <div className="border-l border-forest-700 pl-3">
+              <h1 className="font-display font-black text-sm tracking-tight text-white flex items-center gap-2">
+                <span>Orders CRM</span>
+                <span className="bg-brand/20 text-brand-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-brand/40">
                   LIVE DB
                 </span>
               </h1>
-              <p className="text-[11px] text-stone-400">
-                Real-time SQLite database sync &amp; WhatsApp customer management
+              <p className="text-[10px] text-stone-400">
+                SQLite database sync &amp; WhatsApp customer management
               </p>
             </div>
           </div>

@@ -17,10 +17,14 @@ export const metadata: Metadata = {
     'pay on delivery trays Nigeria',
     'NairaTree',
   ],
+  icons: {
+    icon: '/images/nairatree-icon.png',
+    apple: '/images/nairatree-icon.png',
+  },
   openGraph: {
     title: 'NairaTree™ Handcrafted Bamboo Serving Trays (Set of 3)',
     description: '100% Eco-Friendly Natural Bamboo Nesting Trays. Free Nationwide Delivery + Pay on Delivery Available.',
-    images: ['/images/tray-rectangular.jpg'],
+    images: ['/images/nairatree-logo-green.jpg'],
     type: 'website',
   },
 };

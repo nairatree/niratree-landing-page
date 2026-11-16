@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShieldCheck, Truck, Phone, Lock, Heart } from 'lucide-react';
 import { BRAND_NAME } from '@/lib/constants';
 
@@ -9,29 +10,30 @@ export default function Footer() {
   const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '2349134837317';
 
   return (
-    <footer className="bg-forest-950 text-stone-300 pt-16 pb-24 sm:pb-16 border-t border-forest-900">
+    <footer className="bg-[#091F16] text-stone-300 pt-16 pb-24 sm:pb-16 border-t border-forest-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand Col */}
           <div className="space-y-4 md:col-span-2">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-forest-800 text-cream-50 flex items-center justify-center font-bold text-xl border border-forest-700">
-                <span className="text-amber-400">N</span>T
-              </div>
-              <span className="font-display font-black text-2xl tracking-tight text-white">
-                {BRAND_NAME}
-              </span>
+              <Image
+                src="/images/nairatree-logo-white.png"
+                alt="NairaTree"
+                width={180}
+                height={36}
+                className="h-8 sm:h-9 w-auto object-contain"
+              />
             </div>
             <p className="text-xs sm:text-sm text-stone-400 max-w-sm leading-relaxed">
               Premium handcrafted home &amp; living essentials. We craft eco-friendly, organic bamboo nesting trays that transform everyday hosting and family life into moments of luxury.
             </p>
             <div className="flex items-center gap-4 text-xs text-amber-400 font-semibold pt-1">
               <span className="flex items-center gap-1">
-                <ShieldCheck className="w-4 h-4 text-emerald-500" /> 100% Verified Bamboo
+                <ShieldCheck className="w-4 h-4 text-brand-400" /> 100% Verified Bamboo
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
-                <Truck className="w-4 h-4 text-emerald-500" /> Nationwide Delivery
+                <Truck className="w-4 h-4 text-brand-400" /> Nationwide Delivery
               </span>
             </div>
           </div>
